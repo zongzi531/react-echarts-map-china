@@ -2,11 +2,24 @@
   "name": "react-echarts-map-china",
   "version": "0.0.1",
   "description": "react-echarts-map-china",
-  "main": "index.js",
+  "main": "esm/index.js",
+  "module": "esm/index.js",
   "repository": "https://github.com/zongzi531/react-echarts-map-china.git",
   "author": "zongzi531 <zongzi.xy@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/rollup/dev.js",
+    "build": "node scripts/rollup/build.js"
+  },
   "devDependencies": {
-    "react": "^16.8.6"
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "react": "^16.8.6",
+    "rollup": "^1.12.4",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0"
   }
 }
