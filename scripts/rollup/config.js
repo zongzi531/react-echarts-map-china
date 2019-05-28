@@ -2,6 +2,7 @@ const rollup = require('rollup')
 const rollupResolve = require('rollup-plugin-node-resolve')
 const rollupBabel = require('rollup-plugin-babel')
 const rollupCjs = require('rollup-plugin-commonjs')
+const rollupJson = require('rollup-plugin-json')
 
 const getInputOptions = (plugins = []) => ({
   input: 'src/index.js',
@@ -10,7 +11,10 @@ const getInputOptions = (plugins = []) => ({
     rollupBabel({
       exclude: 'node_modules/**', // only transpile our source code
       presets: [['@babel/env', { 'modules': false }], '@babel/react'],
-      plugins: ['@babel/plugin-proposal-class-properties']
+      plugins: [
+        '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-syntax-dynamic-import'
+      ]
     }),
     rollupCjs({
       include: 'node_modules/**',
@@ -19,9 +23,15 @@ const getInputOptions = (plugins = []) => ({
         'node_modules/react/index.js': ['Component', 'PureComponent', 'Fragment', 'Children', 'createElement']
       },
     }),
+    rollupJson(),
     ...plugins,
   ],
-  external: ['react'],
+  external: [
+    'react',
+    'prop-types',
+    'echarts',
+  ],
+  inlineDynamicImports: true,
 })
 
 const outputOptions = {
