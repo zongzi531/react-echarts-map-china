@@ -1,0 +1,12 @@
+{
+  "name": "react-echarts-map-china",
+  "version": "0.0.1",
+  "description": "react-echarts-map-china",
+  "main": "index.js",
+  "repository": "https://github.com/zongzi531/react-echarts-map-china.git",
+  "author": "zongzi531 <zongzi.xy@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "react": "^16.8.6"
+  }
+}
