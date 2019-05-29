@@ -1,3 +1,6 @@
 const { createBuild } = require('./config')
+const rollupTerser = require('rollup-plugin-terser')
 
-createBuild([])()
+createBuild([
+  rollupTerser.terser(),
+])()
