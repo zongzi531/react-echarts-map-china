@@ -14,6 +14,8 @@ export default class EchartsMapChina extends React.Component {
     backBtnKey: PropTypes.string,
     backBtnText: PropTypes.string,
     backBtnIcon: PropTypes.string,
+    value: PropTypes.array,
+    equalValue: PropTypes.fun,
   }
 
   static defaultProps = {
@@ -42,6 +44,11 @@ export default class EchartsMapChina extends React.Component {
 
   componentDidMount () {
     this._initEcharts()
+  }
+  componentWillReceiveProps (nextProps) {
+    if (this.props.equalValue && this.props.equalValue(nextProps.value, this.props.value)) {
+      this.setSeries(nextProps.value)
+    }
   }
 
   // 通过 ref 暴露在外的 setSeries 方法
@@ -177,6 +184,11 @@ export default class EchartsMapChina extends React.Component {
       option,
       loadData,
       getWarnMessage,
+      backBtnKey,
+      backBtnText,
+      backBtnIcon,
+      value,
+      equalValue,
       ...props
     } = this.props
 
