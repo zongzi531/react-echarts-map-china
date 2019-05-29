@@ -23,7 +23,7 @@ export default class EchartsMapChina extends React.Component {
     backBtnKey: 'my__back__btn__',
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this._ref = React.createRef()
     this._echarts = null
@@ -40,7 +40,7 @@ export default class EchartsMapChina extends React.Component {
     this.stack = []
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this._initEcharts()
   }
 
@@ -55,8 +55,8 @@ export default class EchartsMapChina extends React.Component {
           // 单选模式
           selectedMode: 'single',
           data,
-        }
-      ]
+        },
+      ],
     })
   }
 
@@ -118,7 +118,7 @@ export default class EchartsMapChina extends React.Component {
       visualMap: {
         min: 800,
         max: 50000,
-        text:['High', 'Low'],
+        text: ['High', 'Low'],
         realtime: false,
         calculable: true,
         inRange: {
@@ -157,7 +157,7 @@ export default class EchartsMapChina extends React.Component {
       mapCode,
       mapType,
     }
-    
+
     this._echarts.showLoading()
     const mapJson = await import(`../static/${mapCode}.json`).then(res => res.default)
     Echarts.registerMap(mapType, mapJson)
@@ -172,7 +172,7 @@ export default class EchartsMapChina extends React.Component {
     }
   }
 
-  render() {
+  render () {
     const {
       option,
       loadData,

@@ -42,11 +42,11 @@ const outputOptions = {
 
 function createBuild (plugins = [], isDev = false) {
   const inputOptions = getInputOptions(plugins)
-  return async function build() {
+  return async function build () {
     const bundle = await rollup.rollup(inputOptions)
-  
-    await bundle.write(outputOptions);
-  
+
+    await bundle.write(outputOptions)
+
     isDev && rollup.watch({
       ...inputOptions,
       output: [outputOptions],

@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "node scripts/rollup/dev.js",
-    "build": "node scripts/rollup/build.js"
+    "build": "node scripts/rollup/build.js",
+    "lint": "eslint --ext .js src"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -17,7 +18,14 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "echarts": "^4.2.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "rollup": "^1.12.4",

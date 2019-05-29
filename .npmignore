@@ -1,0 +1,8 @@
+node_modules/
+scripts/
+src/
+static/
+.eslintignore
+.eslintrc.js
+.gitignore
+yarn.lock
