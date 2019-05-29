@@ -1,5 +1,8 @@
 # React Echarts Map China
 
+[![license](https://img.shields.io/github/license/zongzi531/react-echarts-map-china.svg)](https://github.com/zongzi531/react-echarts-map-china/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/zongzi531/react-echarts-map-china.svg?branch=master)](https://travis-ci.org/zongzi531/react-echarts-map-china)
+
 > A China Map Shuttle Component Based on Echarts
 
 ![demo](./demo.gif)
