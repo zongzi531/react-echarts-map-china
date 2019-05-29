@@ -193,6 +193,7 @@ export default class EchartsMapChina extends React.Component {
       backBtnIcon,
       value,
       equalValue,
+      getData,
       ...props
     } = this.props
 
