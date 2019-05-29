@@ -16,6 +16,7 @@ export default class EchartsMapChina extends React.Component {
     backBtnIcon: PropTypes.string,
     value: PropTypes.array,
     equalValue: PropTypes.fun,
+    getData: PropTypes.fun,
   }
 
   static defaultProps = {
@@ -23,6 +24,7 @@ export default class EchartsMapChina extends React.Component {
     loadData: () => [],
     getWarnMessage: message => console.warn('⚠️警告信息:', message),
     backBtnKey: 'my__back__btn__',
+    getData: () => {},
   }
 
   constructor (props) {
@@ -174,7 +176,9 @@ export default class EchartsMapChina extends React.Component {
 
     this.setSeries(data || [])
 
-    if (!data) {
+    if (data) {
+      this.props.getData(data)
+    } else {
       await this.props.loadData({ mapCode, mapType })
     }
   }

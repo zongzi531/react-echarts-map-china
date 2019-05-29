@@ -24,6 +24,7 @@ yarn add react-echarts-map-china
 | backBtnIcon | 返回按钮 Icon | `string` | `'path:// ...'` |
 | value | 用于更新 series data 数据 | `any[]` | - |
 | equalValue | 用于对比 value 值，返回 `true` 则直接调用 `setSeries` 方法 | `Function(nextValue, value)` | - |
+| getData | 获得已被 Cache 的 series data 数据 | `Function(data)` | - |
 
 ## Methods
 
