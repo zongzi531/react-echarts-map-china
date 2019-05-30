@@ -1,23 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Echarts from 'echarts'
+import omit from 'omit.js'
 
 const CHINA = 'China'
 const CHINACODE = '100000'
 const LEVEL_1_CODE = '0000'
 
 export default class EchartsMapChina extends React.Component {
-  static proptTypes = {
+  static propTypes = {
     option: PropTypes.object,
-    loadData: PropTypes.fun,
-    getWarnMessage: PropTypes.fun,
+    loadData: PropTypes.func,
+    getWarnMessage: PropTypes.func,
     backBtnKey: PropTypes.string,
     backBtnText: PropTypes.string,
     backBtnIcon: PropTypes.string,
     value: PropTypes.array,
-    equalValue: PropTypes.fun,
-    getData: PropTypes.fun,
+    equalValue: PropTypes.func,
+    getData: PropTypes.func,
   }
+
+  omitProps = [
+    'option',
+    'loadData',
+    'getWarnMessage',
+    'backBtnKey',
+    'backBtnText',
+    'backBtnIcon',
+    'value',
+    'equalValue',
+    'getData',
+  ]
 
   static defaultProps = {
     option: {},
@@ -47,9 +60,10 @@ export default class EchartsMapChina extends React.Component {
   componentDidMount () {
     this._initEcharts()
   }
-  componentWillReceiveProps (nextProps) {
-    if (this.props.equalValue && this.props.equalValue(nextProps.value, this.props.value)) {
-      this.setSeries(nextProps.value)
+
+  componentDidUpdate(prevProps)  {
+    if (this.props.equalValue && this.props.equalValue(prevProps.value, this.props.value)) {
+      this.setSeries(this.props.value)
     }
   }
 
@@ -184,18 +198,7 @@ export default class EchartsMapChina extends React.Component {
   }
 
   render () {
-    const {
-      option,
-      loadData,
-      getWarnMessage,
-      backBtnKey,
-      backBtnText,
-      backBtnIcon,
-      value,
-      equalValue,
-      getData,
-      ...props
-    } = this.props
+    const props = omit(this.props, this.omitProps)
 
     return (<div ref={this._ref} {...props} />)
   }

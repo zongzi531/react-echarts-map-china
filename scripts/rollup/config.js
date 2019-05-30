@@ -8,14 +8,7 @@ const getInputOptions = (plugins = []) => ({
   input: 'src/index.js',
   plugins: [
     rollupResolve(),
-    rollupBabel({
-      exclude: 'node_modules/**', // only transpile our source code
-      presets: [['@babel/env', { 'modules': false }], '@babel/react'],
-      plugins: [
-        '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-syntax-dynamic-import'
-      ]
-    }),
+    rollupBabel(),
     rollupCjs({
       include: 'node_modules/**',
       // https://github.com/reduxjs/react-redux/issues/643
@@ -30,6 +23,7 @@ const getInputOptions = (plugins = []) => ({
     'react',
     'prop-types',
     'echarts',
+    'omit.js',
   ],
   inlineDynamicImports: true,
 })

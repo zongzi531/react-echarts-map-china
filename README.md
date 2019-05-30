@@ -13,8 +13,6 @@
 yarn add react-echarts-map-china
 ```
 
-> You may need install `yarn add react prop-types echarts`.
-
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 |
@@ -26,7 +24,7 @@ yarn add react-echarts-map-china
 | backBtnText | 返回按钮文本 | `string` | `'返回'` |
 | backBtnIcon | 返回按钮 Icon | `string` | `'path:// ...'` |
 | value | 用于更新 series data 数据 | `any[]` | - |
-| equalValue | 用于对比 value 值，返回 `true` 则直接调用 `setSeries` 方法 | `Function(nextValue, value)` | - |
+| equalValue | 用于对比 value 值，返回 `true` 则直接调用 `setSeries` 方法 | `Function(prevValue, value)` | - |
 | getData | 获得已被 Cache 的 series data 数据 | `Function(data)` | - |
 
 ## Methods
