@@ -1,11 +1,15 @@
 import React from 'react'
+import { create } from 'react-test-renderer'
+import { configure, mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import EchartsMapChina from '../index'
-import ReactTestRenderer from 'react-test-renderer'
 
-test('Test DefaultProps.', () => {
+configure({ adapter: new Adapter() })
+
+test('Test DefaultProps.', async () => {
   let refs = null
 
-  ReactTestRenderer.create(
+  await create(
     <EchartsMapChina
       ref={ref => refs = ref}
     />,
@@ -20,8 +24,8 @@ test('Test DefaultProps.', () => {
   expect(props.getData()).toEqual(undefined)
 })
 
-test('Test omitProps.', () => {
-  const renderer = ReactTestRenderer.create(
+test('Test omitProps.', async () => {
+  const renderer = await create(
     <EchartsMapChina
       option={{ test: 'test'}}
       loadData={() => [1, 2]}
@@ -40,4 +44,25 @@ test('Test omitProps.', () => {
   for (const key of Object.keys(EchartsMapChina.propTypes)) {
     expect(props).not.toHaveProperty(key)
   }
+})
+
+test('Test componentDidUpdate Update value.', async () => {
+  const SPY_componentDidUpdate = jest.spyOn(EchartsMapChina.prototype, 'componentDidUpdate')
+  const wrapper = await mount((
+    <EchartsMapChina
+      value={[1, 2]}
+      equalValue={(prevValue, value) => prevValue !== value}
+    />
+  ))
+
+  wrapper.instance()._echarts = {
+    setOption: jest.fn(),
+    on: jest.fn(),
+  }
+
+  expect(SPY_componentDidUpdate).not.toHaveBeenCalled()
+
+  wrapper.setProps({ value: [1, 2, 3] })
+
+  expect(SPY_componentDidUpdate).toHaveBeenCalled()
 })
