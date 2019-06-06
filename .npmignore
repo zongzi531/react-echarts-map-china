@@ -1,7 +1,13 @@
+coverage/
 node_modules/
 scripts/
 src/
+static/
+utils/
+.babelrc.js
 .eslintignore
 .eslintrc.js
 .gitignore
+.travis.yml
+yarn-error.log
 yarn.lock
