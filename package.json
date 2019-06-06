@@ -1,6 +1,6 @@
 {
   "name": "react-echarts-map-china",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A China Map Shuttle Component Based on Echarts",
   "main": "esm/index.js",
   "module": "esm/index.js",
@@ -12,7 +12,8 @@
     "build": "node scripts/rollup/build.js",
     "lint": "eslint --ext .js src",
     "test": "jest",
-    "codecov": "codecov"
+    "codecov": "codecov",
+    "create-static": "node utils/createStaticPath.js"
   },
   "dependencies": {
     "echarts": "^4.2.1",
@@ -36,10 +37,12 @@
     "eslint": "^5.16.0",
     "eslint-plugin-jest": "^22.6.4",
     "eslint-plugin-react": "^7.13.0",
+    "glob": "^7.1.4",
     "jest": "^24.8.0",
     "jest-canvas-mock": "^2.1.0",
     "react-test-renderer": "^16.8.6",
     "rollup": "^1.12.4",
+    "rollup-plugin-alias": "^1.5.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-json": "^4.0.0",

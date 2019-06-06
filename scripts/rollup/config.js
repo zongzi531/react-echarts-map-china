@@ -1,8 +1,10 @@
+const path = require('path')
 const rollup = require('rollup')
 const rollupResolve = require('rollup-plugin-node-resolve')
 const rollupBabel = require('rollup-plugin-babel')
 const rollupCjs = require('rollup-plugin-commonjs')
 const rollupJson = require('rollup-plugin-json')
+const rollupAlias = require('rollup-plugin-alias')
 
 const getInputOptions = (plugins = []) => ({
   input: 'src/index.js',
@@ -17,6 +19,11 @@ const getInputOptions = (plugins = []) => ({
       },
     }),
     rollupJson(),
+    rollupAlias({
+      resolve: ['.js', '.json'],
+      '@': path.join(__dirname, '../../src'),
+      '~': path.join(__dirname, '../../'),
+    }),
     ...plugins,
   ],
   external: [
