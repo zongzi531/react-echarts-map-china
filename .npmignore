@@ -5,6 +5,7 @@ src/
 static/
 utils/
 .babelrc.js
+.DS_Store
 .eslintignore
 .eslintrc.js
 .gitignore

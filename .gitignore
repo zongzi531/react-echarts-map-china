@@ -1,5 +1,5 @@
+coverage/
+esm/
 node_modules/
 .DS_Store
-esm/
-coverage/
 yarn-error.log

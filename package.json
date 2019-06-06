@@ -1,6 +1,6 @@
 {
   "name": "react-echarts-map-china",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A China Map Shuttle Component Based on Echarts",
   "main": "esm/index.js",
   "module": "esm/index.js",
