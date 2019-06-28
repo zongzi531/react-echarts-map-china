@@ -12,6 +12,9 @@
 
 ```bash
 yarn add react-echarts-map-china
+
+## 静态数据版本安装
+yarn add react-echarts-map-china@0.1.7
 ```
 
 ## API

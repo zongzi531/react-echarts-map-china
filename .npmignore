@@ -2,7 +2,6 @@ coverage/
 node_modules/
 scripts/
 src/
-static/
 utils/
 .babelrc.js
 .DS_Store
@@ -10,5 +9,6 @@ utils/
 .eslintrc.js
 .gitignore
 .travis.yml
+demo.gif
 yarn-error.log
 yarn.lock

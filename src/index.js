@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Echarts from 'echarts'
 import omit from 'omit.js'
-import staticMapData from './getStatic'
 
 const CHINA = 'China'
 const CHINACODE = '100000'
@@ -166,15 +165,13 @@ export default class EchartsMapChina extends React.Component {
 
   // 获取城市数据
   getCityMap = async () => {
-    this.cityMap = await Promise.resolve()
-      .then(() => staticMapData.china_address_v4)
-      .then((data = []) => {
-        const cityMap = {}
-        for (let i = 0; i < data.length; i++) {
-          cityMap[data[i].name] = data[i].value
-        }
-        return cityMap
-      })
+    this.cityMap = await import('../static/china_address_v4.json').then(({ default: data } = []) => {
+      const cityMap = {}
+      for (let i = 0; i < data.length; i++) {
+        cityMap[data[i].name] = data[i].value
+      }
+      return cityMap
+    })
   }
 
   // 加载地图方法
@@ -185,9 +182,7 @@ export default class EchartsMapChina extends React.Component {
     }
 
     this._echarts.showLoading()
-    const mapJson = await Promise.resolve()
-      .then(() => staticMapData[mapCode])
-      .then(res => res)
+    const mapJson = await import(`../static/${mapCode}.json`).then(res => res.default)
     Echarts.registerMap(mapType, mapJson)
     this._echarts.hideLoading()
 
