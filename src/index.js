@@ -61,6 +61,10 @@ export default class EchartsMapChina extends React.Component {
     this._initEcharts()
   }
 
+  componentWillUnmount () {
+    Echarts.dispose(this._echarts)
+  }
+
   componentDidUpdate(prevProps)  {
     if (this.props.equalValue && this.props.equalValue(prevProps.value, this.props.value)) {
       this.setSeries(this.props.value)
